@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xzs.dao.AdminMapper">
+  <resultMap id="BaseResultMap" type="com.xzs.entity.Admin">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="adminName" jdbcType="VARCHAR" property="adminName" />
+    <result column="adminPwad" jdbcType="VARCHAR" property="adminPwad" />
+    <result column="iphone" jdbcType="VARCHAR" property="iphone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="adminImg" jdbcType="VARCHAR" property="adminImg" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="updateTime" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="adminType" jdbcType="VARCHAR" property="adminType" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="ext" jdbcType="VARCHAR" property="ext" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    delete from admin
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xzs.entity.Admin">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into admin (adminName, adminPwad, iphone, 
+      email, adminImg, createTime, 
+      updateTime, adminType, status, 
+      ext)
+    values (#{adminName,jdbcType=VARCHAR}, #{adminPwad,jdbcType=VARCHAR}, #{iphone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{adminImg,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{adminType,jdbcType=VARCHAR}, #{status,jdbcType=VARCHAR}, 
+      #{ext,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.xzs.entity.Admin">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    update admin
+    set adminName = #{adminName,jdbcType=VARCHAR},
+      adminPwad = #{adminPwad,jdbcType=VARCHAR},
+      iphone = #{iphone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      adminImg = #{adminImg,jdbcType=VARCHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      adminType = #{adminType,jdbcType=VARCHAR},
+      status = #{status,jdbcType=VARCHAR},
+      ext = #{ext,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select id, adminName, adminPwad, iphone, email, adminImg, createTime, updateTime, 
+    adminType, status, ext
+    from admin
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    select id, adminName, adminPwad, iphone, email, adminImg, createTime, updateTime, 
+    adminType, status, ext
+    from admin
+  </select>
+</mapper>
